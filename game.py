@@ -1,42 +1,107 @@
 # import packages to extend python
 from random import randint
 
+# create a variable stack
 # [] => this is an array. An array is a special type of container that can hold multiple items
 # arrays are indexed (their contents get assigned a number)
 # the index always starts at 0
 choices = ["rock","paper", "scissors"]
 
-# this is the player choice
-user_choice = input("choose rock, paper or scissors: ")
+user_lives = 5
+computer_lives = 5
 
-# this will be the AI choice -> a random pick from the choices array
-computer_choice = choices[randint(0, 2)]
+user_choice = False; # True and False are Booleans - data types that can be truth-y or false-y
 
-# just validating that I can make a choice
-# print outputs whatever is inside the brackets
-# check to see what the user input
-print("user chose: " + user_choice)
+# set up our game loop
+while user_choice is False:
 
-# validate that the random choice worked for the AI
-print("AI chose: " + computer_choice)
+	# this is the player choice
+	print("============*/ RPS /*==============")
+	print(" Computer Lives:", computer_lives, "/5")
+	print(" Player Lives:", user_lives, "/5")
+	print("===========================")
+	print("Choose your weapon or type quit to exit\n")
+	user_choice = input("choose rock, paper or scissors: \n")
 
-if (computer_choice == user_choice):
-	print("tie")
+	# if the player chooses to quit, then don't do anything else
+	# just exit the process and quit the game
+	if user_choice == "quit":
+		print("You chose to quit, quitter!")
+		exit()
 
-elif (computer_choice == "rock"):
-	if (user_choice == "scissors"):
-		print("you lose!")
+	# this will be the AI choice -> a random pick from the choices array
+	computer_choice = choices[randint(0, 2)]
+
+	# just validating that I can make a choice
+	# print outputs whatever is inside the brackets
+	# check to see what the user input
+	print("user chose: " + user_choice)
+
+	# validate that the random choice worked for the AI
+	print("AI chose: " + computer_choice)
+
+	if (computer_choice == user_choice):
+		print("tie")
+
+	elif (computer_choice == "rock"):
+		if (user_choice == "scissors"):
+			user_lives = user_lives - 1
+			print("you lose! player lives:", user_lives)
+		else:
+			print("you win!")
+			computer_lives = computer_lives - 1
+
+	elif (computer_choice == "paper"):
+		if (user_choice == "scissors"):
+			print("you win!")
+			computer_lives = computer_lives - 1
+		else:
+			user_lives = user_lives - 1
+			print("you lose! player lives:", user_lives)
+
+	elif (computer_choice == "scissors"):
+		if (user_choice == "paper"):
+			user_lives = user_lives - 1
+			print("you lose! player lives:", user_lives)
+		else:
+			print("you win!")
+			computer_lives = computer_lives - 1
+
+	# check player lives and computer lives
+	if user_lives is 0:
+		print("Game over, Loser! Would you like to play again?")
+		choice = input("Y / N? ")
+
+		if choice == "Y" or choice == "y":
+			# reset the game and start over
+			user_lives = 5
+			computer_lives = 5
+			user_choice = False
+
+		elif choice == "N" or choice == "n":
+			# exit message and quit
+			print("you chose to quit. Better luck next time!")
+			exit()
+		else:
+			print("Make a valid choice - Y or N")
+
+	elif computer_lives is 0:
+		print("You won, Winner! Would you like to play again?")
+		choice = input("Y / N? ")
+
+		if choice == "Y" or choice == "y":
+			# reset the game and start over
+			user_lives = 5
+			computer_lives = 5
+			user_choice = False
+
+		elif choice == "N" or choice == "n":
+			# exit message and quit
+			print("you chose to quit. Better luck next time!")
+			exit()
+		else:
+			print("Make a valid choice - Y or N")
+
 	else:
-		print("you win!")
-
-elif (computer_choice == "paper"):
-	if (user_choice == "scissors"):
-		print("you win!")
-	else:
-		print("you lose!")
-
-elif (computer_choice == "scissors"):
-	if (user_choice == "paper"):
-		print("you lose!")
-	else:
-		print("you win!")
+		user_choice = False
+	# computer_choice = choices[randint(0,2)]			
