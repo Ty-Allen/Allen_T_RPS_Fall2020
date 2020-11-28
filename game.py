@@ -1,7 +1,7 @@
 # import packages to extend python
 from random import randint
 
-from gameComponents import gameVars, winLose
+from gameComponents import gameVars, winLose, gameComparison
 
 # set up our game loop
 while gameVars.user_choice is False:
@@ -12,54 +12,55 @@ while gameVars.user_choice is False:
 	print(" Player Lives:", gameVars.user_lives, "/", gameVars.total_lives)
 	print("===========================")
 	print("Choose your weapon or type quit to exit\n")
-	gameVars.user_choice = input("choose rock, paper or scissors: \n")
+	gameVars.user_choice = input("Choose rock, paper or scissors: \n")
 
 	# if the player chooses to quit, then don't do anything else
 	# just exit the process and quit the game
 	if gameVars.user_choice == "quit":
 		print("You chose to quit, quitter!")
 		exit()
+	
+	# # this will be the AI choice -> a random pick from the choices array
+	# computer_choice = gameVars.choices[randint(0, 2)]
 
-#Start here		
-	# this will be the AI choice -> a random pick from the choices array
-	computer_choice = gameVars.choices[randint(0, 2)]
+	# # just validating that I can make a choice
+	# # print outputs whatever is inside the brackets
+	# # check to see what the user input
+	# print("user chose: " + gameVars.user_choice)
 
-	# just validating that I can make a choice
-	# print outputs whatever is inside the brackets
-	# check to see what the user input
-	print("user chose: " + gameVars.user_choice)
+	# # validate that the random choice worked for the AI
+	# print("AI chose: " + computer_choice)
 
-	# validate that the random choice worked for the AI
-	print("AI chose: " + computer_choice)
+	
 
-	if (computer_choice == gameVars.user_choice):
-		print("tie")
+	# if (computer_choice == gameVars.user_choice):
+	# 	print("tie")
 
-	elif (computer_choice == "rock"):
-		if (gameVars.user_choice == "scissors"):
-			gameVars.user_lives -= 1
-			print("you lose! player lives:", gameVars.user_lives)
-		else:
-			print("you win!")
-			gameVars.computer_lives -= 1
+	# elif (computer_choice == "rock"):l
+	# 	if (gameVars.user_choice == "scissors"):
+	# 		gameVars.user_lives -= 1
+	# 		print("you lose! player lives:", gameVars.user_lives)
+	# 	else:
+	# 		print("you win!")
+	# 		gameVars.computer_lives -= 1
 
-	elif (computer_choice == "paper"):
-		if (gameVars.user_choice == "scissors"):
-			print("you win!")
-			gameVars.computer_lives -= 1
-		else:
-			gameVars.user_lives -= 1
-			print("you lose! player lives:", gameVars.user_lives)
+	# elif (computer_choice == "paper"):
+	# 	if (gameVars.user_choice == "scissors"):
+	# 		print("you win!")
+	# 		gameVars.computer_lives -= 1
+	# 	else:
+	# 		gameVars.user_lives -= 1
+	# 		print("you lose! player lives:", gameVars.user_lives)
 
-	elif (computer_choice == "scissors"):
-		if (gameVars.user_choice == "paper"):
-			gameVars.user_lives -= 1
-			print("you lose! player lives:", gameVars.user_lives)
-		else:
-			print("you win!")
-			gameVars.computer_lives -= 1
+	# elif (computer_choice == "scissors"):
+	# 	if (gameVars.user_choice == "paper"):
+	# 		gameVars.user_lives -= 1
+	# 		print("you lose! player lives:", gameVars.user_lives)
+	# 	else:
+	# 		print("you win!")
+	# 		gameVars.computer_lives -= 1
 
-#end here
+	gameComparison.comparison(gameVars.user_choice)
 
 	# check player lives and computer lives
 	if gameVars.user_lives is 0:
