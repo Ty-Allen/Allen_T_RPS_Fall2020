@@ -32,12 +32,26 @@ def comparison(user_choice):
 			gameVars.user_lives -= 1
 			print("You lose! player lives:", gameVars.user_lives)
 		else:
-			print("You win!")
+			print("""
+				     _______
+				---'    ____)____
+           				   ______)
+         				  _______)
+         				 _______)
+				---.__________) You win! 
+				""")
 			gameVars.computer_lives -= 1
 
 	elif (computer_choice == "paper"):
 		if (gameVars.user_choice == "scissors"):
-			print("You win!")
+			print("""
+    			    	   _______
+				---'   ____)____
+          				  ______)
+       					__________)
+      				  	(____)
+				---.__(___) You win!
+				""")
 			gameVars.computer_lives -= 1
 		else:
 			gameVars.user_lives -= 1
@@ -48,5 +62,12 @@ def comparison(user_choice):
 			gameVars.user_lives -= 1
 			print("You lose! player lives:", gameVars.user_lives)
 		else:
-			print("You win!")
+			print("""
+				      _______
+				  ---'   ____)
+     					(_____)
+      					(_____)
+      					(____)
+				  ---.__(___) You win! 
+				""")
 			gameVars.computer_lives -= 1
