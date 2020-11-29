@@ -10,9 +10,13 @@ Clone the project, <code>cd</code> to your directory/download, and run the <code
 
 ### Rules
 Same as the classic game:
+
 Paper covers Rock, Scissors cut Paper, Rock smashes Scissors
+
 Choose you weapon wisely.
+
 Built with [Python 3](https://wiki.python.org/moin/BeginnersGuide)
+
 Enjoy!
 
 ### License
